@@ -4,11 +4,13 @@
  */
 package database;
 
+import com.Class.taikhoan;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,9 +20,9 @@ import javax.swing.JOptionPane;
  * @author lehie
  */
 public class DBconnect {
-    public Connection conn; 
-    public Statement stmt;
-    public ResultSet rs;
+    private Connection conn; 
+    private Statement stmt;
+    private ResultSet rs;
     public void getconnect(){
         try {
             String dbURL = "jdbc:mysql://localhost:3306/webphp";
@@ -28,20 +30,49 @@ public class DBconnect {
             String pass = "";
             conn = DriverManager.getConnection(dbURL,user,pass);
             stmt = conn.createStatement();
-            System.out.println("connected");
+            System.out.print("connected");
         } catch (Exception e) {
             int choice = JOptionPane.showConfirmDialog(null, "Lỗi:"+e.toString(), "ERO", JOptionPane.YES_OPTION);
         }
     }
-    public void getResult(String sql){    
+    public ResultSet getResult(String sql){    
         try {
             rs = stmt.executeQuery(sql);
         } catch (SQLException ex) {
             Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return rs;
     }
-    public static void main(String[] args) {
+    public void update(String sql){
+        try {
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void chucnang(String sql){
+        try {
+            DBconnect db = new DBconnect();
+            db.getconnect();
+            db.update(sql);
+            System.out.println("update sus");
+        }catch (Exception ex){
+            JOptionPane.showConfirmDialog(null, "Lỗi: "+ex.getMessage(),"Loi",JOptionPane.OK_OPTION);
+        }
+    }
+    public ResultSet getrs(String sql){
         DBconnect db = new DBconnect();
         db.getconnect();
+        return db.getResult(sql);
+    }
+    public static void main(String[] args) {
+        taikhoan tk = new taikhoan();
+        List<taikhoan> ltk = tk.hienthi();
+        for(int i =0;i < ltk.size();i++){
+            System.out.println("--");
+            System.out.println("tai khoan: "+ltk.get(i).getTaikhoan());
+            System.out.println("mat khau: "+ltk.get(i).getMatkhau());
+            System.out.println("duyet: "+ltk.get(i).getDuyet());
+        }
     }
 }

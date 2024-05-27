@@ -1,4 +1,4 @@
-
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="../assets/js/color-modes.js"></script>
@@ -92,6 +92,10 @@
   .bd-mode-toggle .dropdown-menu .active .bi {
     display: block !important;
   }
+  .full-width {
+            width: 100%;
+            /* Chi?u cao b?ng 100% chi?u cao viewport */
+        }
 </style>
 
 
@@ -99,27 +103,26 @@
 <link href="pageadmin.css" rel="stylesheet">
 </head>
 <body>
-
 <main class="d-flex flex-nowrap">
 <h1 class="visually-hidden">Sidebars examples</h1>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-    <span class="fs-4">Sidebar</span>
+    <span class="fs-4">Administrator</span>
   </a>
 <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <a href="#" class="nav-link active" aria-current="page">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-        Home
+        home
       </a>
     </li>
     <li>
       <a href="#" class="nav-link text-white">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-        Dashboard
+        Quản lý tài khoản
       </a>
     </li>
     <li>
@@ -158,12 +161,18 @@
 </div>
 
 <div class="b-example-divider b-example-vr"></div>
+<div>
+    <%@ include file="taikhoan.jsp" %>
+</div>
+
 
 
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="sidebars.js"></script></body>
+<script src="sidebars.js"></script>
+</body>
 </html>
+
 
 

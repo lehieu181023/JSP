@@ -7,7 +7,7 @@
    id = "WebApp_ID" version="2.5">
 	
    <welcome-file-list>
-      <welcome-file>faces/home.xhtml</welcome-file>
+      <welcome-file>pageadmin.jsp</welcome-file>
    </welcome-file-list>
 	
    <!-- 
@@ -40,6 +40,16 @@
     <servlet-mapping>
         <servlet-name>page1Servlet</servlet-name>
         <url-pattern>/page1</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>sltaikhoan</servlet-name>
+        <servlet-class>com.example.sltaikhoan</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>sltaikhoan</servlet-name>
+        <url-pattern>/sltaikhoan</url-pattern>
     </servlet-mapping>
    
    <servlet-mapping>
