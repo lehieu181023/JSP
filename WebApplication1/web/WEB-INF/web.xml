@@ -1,75 +1,104 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
-<web-app xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-   xmlns = "http://java.sun.com/xml/ns/javaee" 
-   xmlns:web = "http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-   xsi:schemaLocation = "http://java.sun.com/xml/ns/javaee 
-   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-   id = "WebApp_ID" version="2.5">
-	
-   <welcome-file-list>
-      <welcome-file>pageadmin.jsp</welcome-file>
-   </welcome-file-list>
-	
-   <!-- 
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>dangnhap</servlet-name>
+        <servlet-class>com.example.dangnhap</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>dangxuat</servlet-name>
+        <servlet-class>com.example.dangxuat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>lienhe</servlet-name>
+        <servlet-class>com.example.sllienhe</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminqltk</servlet-name>
+        <url-pattern>/adminqltk</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminlh</servlet-name>
+        <url-pattern>/adminlh</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dangnhap</servlet-name>
+        <url-pattern>/dangnhap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dangxuat</servlet-name>
+        <url-pattern>/dangxuat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>lienhe</servlet-name>
+        <url-pattern>/lienhe</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <!-- 
       FacesServlet is main servlet responsible to handle all request. 
       It acts as central controller.
       This servlet initializes the JSF components before the JSP is displayed.
    -->
-	
-   <servlet>
-      <servlet-name>Faces Servlet</servlet-name>
-      <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-      <load-on-startup>1</load-on-startup>
-   </servlet>
-   
-   <servlet>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
         <servlet-name>HomeServlet</servlet-name>
         <servlet-class>com.example.HomeServlet</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>adminqltk</servlet-name>
+        <servlet-class>com.example.adminqltk</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminlh</servlet-name>
+        <servlet-class>com.example.adminlh</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>page1Servlet</servlet-name>
         <servlet-class>com.example.page1Severlet</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>page1Servlet</servlet-name>
         <url-pattern>/page1</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>sltaikhoan</servlet-name>
         <servlet-class>com.example.sltaikhoan</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>sltaikhoan</servlet-name>
         <url-pattern>/sltaikhoan</url-pattern>
     </servlet-mapping>
-   
-   <servlet-mapping>
-      <servlet-name>Faces Servlet</servlet-name>
-      <url-pattern>/faces/*</url-pattern>
-   </servlet-mapping>
-	
-   <servlet-mapping>
-      <servlet-name>Faces Servlet</servlet-name>
-      <url-pattern>*.jsf</url-pattern>
-   </servlet-mapping>
-	
-   <servlet-mapping>
-      <servlet-name>Faces Servlet</servlet-name>
-      <url-pattern>*.faces</url-pattern>
-   </servlet-mapping>
-	
-   <servlet-mapping>
-      <servlet-name>Faces Servlet</servlet-name>
-      <url-pattern>*.xhtml</url-pattern>
-   </servlet-mapping>
-	
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.faces</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <context-param>
+      <param-name>javax.faces.PROJECT_STAGE</param-name>
+      <param-value>Development</param-value>
+   </context-param>
+   <context-param>
+      <param-name>javax.faces.CONFIG_FILES</param-name>
+      <param-value>/WEB-INF/faces-config.xml</param-value>
+   </context-param>
 </web-app>

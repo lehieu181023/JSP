@@ -26,20 +26,20 @@ public class sltaikhoan extends HttpServlet {
         if("Them".equals(btn)) {
             taikhoan tk = new taikhoan(taikhoan, matkhau, duyet);
             tk.them();
-            request.getRequestDispatcher("pageadmin.jsp").forward(request, response);
+            response.sendRedirect(request.getHeader("referer"));
         }
         else if("Sua".equals(btn)) {
             taikhoan tk = new taikhoan(taikhoan, matkhau, duyet);
             tk.sua();
-            request.getRequestDispatcher("pageadmin.jsp").forward(request, response);
+            response.sendRedirect(request.getHeader("referer"));
         }
         else if("Xoa".equals(btn)) {
             taikhoan tk = new taikhoan(taikhoan, matkhau, duyet);
             tk.xoa();
-            request.getRequestDispatcher("pageadmin.jsp").forward(request, response);
+            response.sendRedirect(request.getHeader("referer"));
         }
         else{
-            request.getRequestDispatcher("pageadmin.jsp").forward(request, response);
+            request.getRequestDispatcher("pageadmin-qltk.jsp").forward(request, response);
         }
     }
 

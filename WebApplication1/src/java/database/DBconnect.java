@@ -4,6 +4,7 @@
  */
 package database;
 
+import com.Class.lienhe;
 import com.Class.taikhoan;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -66,13 +67,13 @@ public class DBconnect {
         return db.getResult(sql);
     }
     public static void main(String[] args) {
-        taikhoan tk = new taikhoan();
-        List<taikhoan> ltk = tk.hienthi();
+        lienhe lh = new lienhe();
+        List<lienhe> ltk = lh.hienthi();
         for(int i =0;i < ltk.size();i++){
             System.out.println("--");
-            System.out.println("tai khoan: "+ltk.get(i).getTaikhoan());
-            System.out.println("mat khau: "+ltk.get(i).getMatkhau());
-            System.out.println("duyet: "+ltk.get(i).getDuyet());
+            System.out.println("tai khoan: "+ltk.get(i).name);
+            System.out.println("mat khau: "+ltk.get(i).email);
+            System.out.println("duyet: "+ltk.get(i).comment);
         }
     }
 }

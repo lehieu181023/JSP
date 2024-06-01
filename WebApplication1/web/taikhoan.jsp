@@ -31,10 +31,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+<main class="mt-3 ms-3">
     
-<main class="justify-content-center align-items-start full-height">
-    
-        <h1 class="text-center">QUẢN LÝ TÀI KHOẢN</h1>
+        <h1 class="text-center">-----------------------QUẢN LÝ TÀI KHOẢN-----------------------</h1>
         <div class="py-2">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
             THÊM TÀI KHOẢN
