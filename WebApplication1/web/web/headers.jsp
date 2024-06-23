@@ -101,7 +101,7 @@
 
 
   <!-- Custom styles for this template -->
-  <link href="headers.css" rel="stylesheet">
+  <link href="web/headers.css" rel="stylesheet">
 </head>
 
 <body>
@@ -118,15 +118,15 @@
         </div>
         <div>
           <ul class="nav">
-            <li class="nav-item mx-3"><a href="lienhe" class="nav-link px-2">TRANG CHỦ</a></li>
-            <li class="nav-item mx-3"><a href="qldiem.php" class="nav-link px-2">ĐIỂM</a></li>
-            <li class="nav-item mx-3"><a href="qlmonhoc.php" class="nav-link px-2">MÔN HỌC</a></li>
-            <li class="nav-item mx-3"><a href="qlsinhvien.php" class="nav-link px-2">SINH VIÊN</a></li>
-            <li class="nav-item mx-3"><a href="diemtl.php" class="nav-link px-2">HỌC LỰC</a></li>
+            <li class="nav-item mx-3"><a href="lienhe?bang=lienhe" class="nav-link px-2">TRANG CHỦ</a></li>
+            <li class="nav-item mx-3"><a href="sldiem" class="nav-link px-2">ĐIỂM</a></li>
+            <li class="nav-item mx-3"><a href="slmonhoc?bang=qlmonhoc" class="nav-link px-2">MÔN HỌC</a></li>
+            <li class="nav-item mx-3"><a href="slsinhvien?bang=qlsinhvien" class="nav-link px-2">SINH VIÊN</a></li>
+            <li class="nav-item mx-3"><a href="slhocluc?bang=qlsinhvien" class="nav-link px-2">HỌC LỰC</a></li>
             <% 
                 String username = (String) session.getAttribute("username");
                 if("admin".equals(username)){
-                    out.print("<li class='nav-item mx-3'><a href='adminqltk' class='nav-link px-2'>ADMIN</a></li>");
+                    out.print("<li class='nav-item mx-3'><a href='tranghome' class='nav-link px-2'>ADMIN</a></li>");
                 }
             %>
           </ul>

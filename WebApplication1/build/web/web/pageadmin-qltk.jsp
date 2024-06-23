@@ -100,7 +100,7 @@
 
 
 <!-- Custom styles for this template -->
-<link href="pageadmin.css" rel="stylesheet">
+<link href="config/pageadmin.css" rel="stylesheet">
 </head>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -129,20 +129,20 @@
 <main class="d-flex flex-nowrap">
 <h1 class="visually-hidden">Sidebars examples</h1>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+  <a href="tranghome" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
     <span class="fs-4">Administrator</span>
   </a>
 <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="#" class="nav-link text-white btn btn-primary text-start w-100">
+      <a href="tranghome" class="nav-link text-white btn btn-primary text-start w-100">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
         home      
       </a>
     </li>
     <li>
-      <a href="adminqltk" class="nav-link text-white btn btn-primary text-start w-100">
+      <a href="adminqltk" class="nav-link active text-white btn btn-primary text-start w-100">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
         Quản lý tài khoản
       </a>
@@ -169,12 +169,12 @@
 </div>
 <div class="b-example-divider b-example-vr"></div>
 <div>
- <%@ include file="lienhe.jsp" %>
+ <%@ include file="taikhoan.jsp" %>
 </div>
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="sidebars.js"></script>
+<script src="config/sidebars.js"></script>
 </body>
 </html>
 

@@ -12,6 +12,34 @@
         <servlet-name>lienhe</servlet-name>
         <servlet-class>com.example.sllienhe</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>java</servlet-name>
+        <servlet-class>sldiem.java</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sldiem</servlet-name>
+        <servlet-class>com.example.sldiem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>slsinhvien</servlet-name>
+        <servlet-class>com.example.slsinhvien</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>slmonhoc</servlet-name>
+        <servlet-class>com.example.slmonhoc</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>slhocluc</servlet-name>
+        <servlet-class>com.example.slhocluc</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>tranghome</servlet-name>
+        <servlet-class>com.example.tranghome</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>image</servlet-name>
+        <servlet-class>com.example.image</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>adminqltk</servlet-name>
         <url-pattern>/adminqltk</url-pattern>
@@ -32,8 +60,36 @@
         <servlet-name>lienhe</servlet-name>
         <url-pattern>/lienhe</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>java</servlet-name>
+        <url-pattern>/java</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sldiem</servlet-name>
+        <url-pattern>/sldiem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>slsinhvien</servlet-name>
+        <url-pattern>/slsinhvien</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>slmonhoc</servlet-name>
+        <url-pattern>/slmonhoc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>slhocluc</servlet-name>
+        <url-pattern>/slhocluc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tranghome</servlet-name>
+        <url-pattern>/tranghome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>image</servlet-name>
+        <url-pattern>/image</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>web/index.jsp</welcome-file>
     </welcome-file-list>
     <!-- 
       FacesServlet is main servlet responsible to handle all request. 
@@ -93,12 +149,4 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-    <context-param>
-      <param-name>javax.faces.PROJECT_STAGE</param-name>
-      <param-value>Development</param-value>
-   </context-param>
-   <context-param>
-      <param-name>javax.faces.CONFIG_FILES</param-name>
-      <param-value>/WEB-INF/faces-config.xml</param-value>
-   </context-param>
 </web-app>

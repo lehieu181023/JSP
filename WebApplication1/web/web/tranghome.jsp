@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -100,8 +101,20 @@
 
 
 <!-- Custom styles for this template -->
-<link href="pageadmin.css" rel="stylesheet">
+<link href="config/pageadmin.css" rel="stylesheet">
 </head>
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="aperture" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
+  </symbol>
+  <symbol id="cart" viewBox="0 0 16 16">
+    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </symbol>
+  <symbol id="chevron-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+  </symbol>
+</svg>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="bootstrap" viewBox="0 0 118 94">
@@ -129,14 +142,14 @@
 <main class="d-flex flex-nowrap">
 <h1 class="visually-hidden">Sidebars examples</h1>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+  <a href="tranghome" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
     <span class="fs-4">Administrator</span>
   </a>
 <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="#" class="nav-link text-white btn btn-primary text-start w-100">
+      <a href="tranghome" class="nav-link active text-white btn btn-primary text-start w-100">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
         home      
       </a>
@@ -168,15 +181,23 @@
   </div>
 </div>
 <div class="b-example-divider b-example-vr"></div>
-<div>
- <%@ include file="taikhoan.jsp" %>
-</div>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <h1 class="display-3 fw-bold">Welcome Admin</h1>
+      <h3 class="fw-normal text-muted mb-3">Do anything you with they account</h3>
+      <div class="d-flex gap-3 justify-content-center lead fw-normal">
+      </div>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="sidebars.js"></script>
+<script src="config/sidebars.js"></script>
 </body>
 </html>
+
 
 
 

@@ -4,7 +4,17 @@
  */
 package com.Class;
 
+import database.DBconnect;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,14 +32,12 @@ public class sinhvien implements chucnang{
 
     public sinhvien(){}
 
-    public sinhvien(String hoten, String masv, String khoahoc, Date ngaysinh, String gioitinh, float TBCHT, String xeploai, String nganh) {
+    public sinhvien(String hoten, String masv, String khoahoc, Date ngaysinh, String gioitinh, String nganh) {
         this.hoten = hoten;
         this.masv = masv;
         this.khoahoc = khoahoc;
         this.ngaysinh = ngaysinh;
         this.gioitinh = gioitinh;
-        this.TBCHT = TBCHT;
-        this.xeploai = xeploai;
         this.nganh = nganh;
     }
 
@@ -99,23 +107,114 @@ public class sinhvien implements chucnang{
         this.xeploai = xeploai;
     }
 
-    
+    DBconnect db = new DBconnect();
     
     @Override
     public void them() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "INSERT INTO `qlsinhvien` (`MASV`, `MAK`, `khoahoc`, `HOTEN`, `NGAYSINH`, `GIOITINH`) VALUES ('"+this.masv+"', '"+this.nganh+"', '"+this.khoahoc+"', '"+this.hoten+"', '"+this.getsimpeldate(this.ngaysinh)+"', '"+this.gioitinh+"')";
+        db.chucnang(sql);
     }
 
     @Override
     public void sua() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "UPDATE qlsinhvien SET HOTEN='"+this.hoten+"', NGAYSINH='"+this.getsimpeldate(this.ngaysinh)+"', GIOITINH='"+this.gioitinh+"', MAK='"+this.nganh+"', khoahoc='"+this.khoahoc+"' WHERE MASV='"+this.masv+"'";
+        db.chucnang(sql);
     }
 
     @Override
     public void xoa() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE FROM qlsinhvien WHERE MASV='"+this.masv+"'";
+        db.chucnang(sql);
     }
     
+    public String getsimpeldate(Date a){       
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String formattedDate = sdf.format(a);
+        return formattedDate;
+    }
     
+    public String ckgioitinh(){
+        String check = "";
+        if("Nữ".equals(gioitinh)){
+            check = "checked";
+        }
+        return check;
+    }
+    public List<sinhvien> hienthi(){
+            String sql = "SELECT * FROM qlsinhvien";
+            DBconnect dbht = db.getrs(sql);
+            ResultSet rs = dbht.getRs();
+            List<sinhvien> lsv = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                sinhvien sv = new sinhvien();
+                sv.setMasv(rs.getString("MASV"));
+                sv.setHoten(rs.getString("HOTEN"));
+                sv.setGioitinh(rs.getString("GIOITINH"));
+                sv.setKhoahoc(rs.getString("khoahoc"));
+                sv.setNganh(rs.getString("MAK"));
+                sv.setNgaysinh(rs.getDate("NGAYSINH"));
+                sv.setTBCHT(rs.getFloat("TBCHT"));
+                sv.setXeploai(rs.getString("XEPLOAI"));
+                lsv.add(sv);
+            }
+            dbht.dis();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lsv;
+    }
     
+    public List<sinhvien> hienthi(String sotrang){
+            int sodong = 8;
+            int st = Integer.parseInt(sotrang);
+            String sql = "SELECT * FROM qlsinhvien LIMIT "+((st-1)*sodong)+","+sodong;
+            DBconnect dbht = db.getrs(sql);
+            ResultSet rs = dbht.getRs();
+            List<sinhvien> lsv = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                sinhvien sv = new sinhvien();
+                sv.setMasv(rs.getString("MASV"));
+                sv.setHoten(rs.getString("HOTEN"));
+                sv.setGioitinh(rs.getString("GIOITINH"));
+                sv.setKhoahoc(rs.getString("khoahoc"));
+                sv.setNganh(rs.getString("MAK"));
+                sv.setNgaysinh(rs.getDate("NGAYSINH"));
+                sv.setTBCHT(rs.getFloat("TBCHT"));
+                sv.setXeploai(rs.getString("XEPLOAI"));
+                lsv.add(sv);
+            }
+            dbht.dis();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lsv;
+    }
+    public List<sinhvien> hienthi(String mak,String khoahoc, String soluong){
+        
+            String sql = "SELECT * FROM qlsinhvien WHERE MAK = '"+mak+"'  AND khoahoc = '"+khoahoc+"' ORDER BY TBCHT DESC LIMIT "+soluong+"";
+            DBconnect dbht = db.getrs(sql);
+            ResultSet rs = dbht.getRs();
+            List<sinhvien> lsv = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                sinhvien sv = new sinhvien();
+                sv.setMasv(rs.getString("MASV"));
+                sv.setHoten(rs.getString("HOTEN"));
+                sv.setGioitinh(rs.getString("GIOITINH"));
+                sv.setKhoahoc(rs.getString("khoahoc"));
+                sv.setNganh(rs.getString("MAK"));
+                sv.setNgaysinh(rs.getDate("NGAYSINH"));
+                sv.setTBCHT(rs.getFloat("TBCHT"));
+                sv.setXeploai(rs.getString("XEPLOAI"));
+                lsv.add(sv);
+            }
+            dbht.dis();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lsv;
+    }
 }
+

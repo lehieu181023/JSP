@@ -18,6 +18,8 @@ public class sltaikhoan extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String taikhoan = request.getParameter("taikhoan");
         String matkhau = request.getParameter("matkhau");
         String duyet = request.getParameter("duyet");
@@ -39,7 +41,7 @@ public class sltaikhoan extends HttpServlet {
             response.sendRedirect(request.getHeader("referer"));
         }
         else{
-            request.getRequestDispatcher("pageadmin-qltk.jsp").forward(request, response);
+            request.getRequestDispatcher("web/pageadmin-qltk.jsp").forward(request, response);
         }
     }
 

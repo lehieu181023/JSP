@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author lehie
  */
+@ManagedBean
 public class taikhoan implements chucnang{
     DBconnect db = new DBconnect();
     public taikhoan(String taikhoan, String matkhau, String duyet) {
@@ -72,7 +74,8 @@ public class taikhoan implements chucnang{
     public List<taikhoan> hienthi() {
         List<taikhoan> ltk = new ArrayList<>();
         String sql = "SELECT * FROM taikhoan";
-        ResultSet rs = db.getrs(sql);
+        DBconnect dbht = db.getrs(sql);
+        ResultSet rs = dbht.getRs();
         try {
             while (rs.next()) {
                 taikhoan tk = new taikhoan();
@@ -80,10 +83,15 @@ public class taikhoan implements chucnang{
                 tk.setMatkhau(rs.getString("password"));
                 tk.setDuyet(rs.getString("duyet"));
                 ltk.add(tk);
-            }         
+            }
+            dbht.dis();
         } catch (SQLException ex) {
             Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ltk;
     }
+    public String checkd(){
+        return "checked";
+    }
+
 }

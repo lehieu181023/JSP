@@ -1,4 +1,7 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%@include file="headers.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
@@ -6,11 +9,11 @@
 <head>
     <!-- Theme Made By www.w3schools.com - No Copyright -->
     <title>Trang Chủ Sinh Viên</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="./image/icon.png" />
@@ -198,7 +201,6 @@
             resize: none;
         }
     </style>
-    
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -214,7 +216,7 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="https://eaut.edu.vn/wp-content/uploads/2023/12/anh-1920x1080-1333-x-421-px-2048x647.png.webp"
-                    alt="New York" width="1200" height="700"/>
+                    alt="New York" width="1200" height="700">
             </div>
         </div>
 
@@ -228,44 +230,27 @@
                 Đại học và Sau đại học với nhiều hình thức: Chính quy, liên thông, vừa làm vừa học. Đào tạo nguồn nhân
                 lực có phẩm chất đạo đức và trình độ chuyên môn đáp ứng nhu cầu của xã hội; nghiên cứu khoa học theo
                 định hướng ứng dụng và chuyển giao tri thức, phục vụ sự phát triển của Đất nước.</p>
-            <br/>
+            <br>
             <div class="row">
+                <c:set var="bean" value="${JSFtop3}" />
+                <c:forEach var="index" begin="1" end="3">
                 <div class="col-sm-4">
                     <p class="text-center">
-                        <strong>#{JSFtop3.getmasvhoten(0)}</strong>
-                    </p><br/>
-                    <a href="#demo" data-toggle="collapse">
+                        <strong></strong>
+                    </p><br>
+                    <a href="#demo${index}" data-toggle="collapse">
                         <img src="" class="img-circle person" alt="Random Name" width="255"
-                            height="255"/>
+                            height="255">
                     </a>
-                    <div id="demo" class="collapse">
-                        <p>Sinh Viên Ngành: #{JSFtop3.getnganh(0)}</p>
-                        <p>Loại bằng: #{JSFtop3.gethocluc(0)}</p>
+                    
+                    <div id="demo${index}" class="collapse">
+                        <p>Sinh Viên Ngành: ${bean.so}</p>
+                        <p>Loại bằng: ${JSFtop3.JSFtop3().get(index).getXeploai()}</p>
                         <p></p>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <p class="text-center"><strong>#{JSFtop3.getmasvhoten(1)}</strong></p><br/>
-                    <a href="#demo2" data-toggle="collapse">
-                        <img src="" class="img-circle person" alt="Random Name" width="255"
-                            height="255"/>
-                    </a>
-                    <div id="demo2" class="collapse">
-                        <p>Sinh Viên Ngành: #{JSFtop3.getnganh(1)}</p>
-                        <p>Loại bằng: #{JSFtop3.gethocluc(1)}</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <p class="text-center"><strong>#{JSFtop3.getmasvhoten(2)}</strong></p><br/>
-                    <a href="#demo3" data-toggle="collapse">
-                        <img src="" class="img-circle person" alt="Random Name" width="255"
-                            height="255"/>
-                    </a>
-                    <div id="demo3" class="collapse">
-                        <p>Sinh Viên Ngành: #{JSFtop3.getnganh(2)}</p>
-                        <p>Loại bằng: #{JSFtop3.gethocluc(2)}</p>
-                    </div>
-                </div>
+                </c:forEach>
+                
             </div>
         </div>
 
@@ -285,11 +270,11 @@
                             <div class="form-group">
                                 <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23
                                     per person</label>
-                                <input type="number" class="form-control" id="psw" placeholder="How many?"/>
+                                <input type="number" class="form-control" id="psw" placeholder="How many?">
                             </div>
                             <div class="form-group">
                                 <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
-                                <input type="text" class="form-control" id="usrname" placeholder="Enter email"/>
+                                <input type="text" class="form-control" id="usrname" placeholder="Enter email">
                             </div>
                             <button type="submit" class="btn btn-block">Pay
                                 <span class="glyphicon glyphicon-ok"></span>
@@ -325,14 +310,14 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" />
+                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
                     </div>
                     <div class="col-sm-6 form-group">
-                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" />
+                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
                     </div>
                 </div>
                 <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
-                <br/>
+                <br>
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <button class="btn pull-right" name="send" type="submit" value="Send">Send</button>
@@ -341,7 +326,7 @@
             </div>      
         </div>
         </form>
-        <br/>
+        <br>
         <h3 class="text-center">Các Điều Khoản</h3>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">Điều Khoản Sử Dụng</a></li>
@@ -368,7 +353,7 @@
     <footer class="text-center">
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
             <span class="glyphicon glyphicon-chevron-up"></span>
-        </a><br/><br/>
+        </a><br><br>
     </footer>
 
 

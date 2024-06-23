@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class adminqltk extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("pageadmin-qltk.jsp").forward(request, response);
+        request.getRequestDispatcher("web/pageadmin-qltk.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -23,7 +23,7 @@ public class dangxuat extends HttpServlet {
         HttpSession session = request.getSession(false);
         session.removeAttribute("username");
         session.removeAttribute("password");
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("web/index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -37,19 +37,15 @@ public class dangnhap extends HttpServlet {
             }
             if(session.getAttribute("username") != null){
                 if("admin".equals((String)session.getAttribute("username"))){
-                    request.getRequestDispatcher("pageadmin-qltk.jsp").forward(request, response);
+                    request.getRequestDispatcher("web/tranghome.jsp").forward(request, response);
                 }
                 else{
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("web/index.jsp").forward(request, response);
                 }
-            }
-            else
-            {
-                
             }
         }
         else{
-            request.getRequestDispatcher("dangnhap.html").forward(request, response);
+            request.getRequestDispatcher("web/dangnhap.html").forward(request, response);
         }
     }
 

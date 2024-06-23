@@ -18,17 +18,20 @@ import javax.servlet.http.HttpServletResponse;
 public class sllienhe extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String comment = request.getParameter("comments");
         String btngui = request.getParameter("send");
         if(btngui != null){
             lienhe lh = new lienhe(email, comment, name);
+            System.out.println("name :" + lh.name);
             lh.them();
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("web/index.jsp").forward(request, response);
         }
         else{
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("web/index.jsp").forward(request, response);
         }
     }
     
