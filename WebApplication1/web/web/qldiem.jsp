@@ -235,19 +235,19 @@
                                 <%=d.tenmonhoc(ld.get(i).getMamh()) %>
                             </th>
                             <th>
-                                <input class= "form-control"  type="text"  name="diemcc" value="<%=ld.get(i).getDiemcc()%>">
+                                <input class= "form-control"  type="number"  name="diemcc" value="<%=ld.get(i).getDiemcc()%>">
                             </th>
                             <th>
-                            <input class= "form-control"  type="text"  name="diemgk" value="<%=ld.get(i).getDiemgk()%>">
+                            <input class= "form-control"  type="number"  name="diemgk" value="<%=ld.get(i).getDiemgk()%>">
                             </th>
                             <th>
-                                <input class= "form-control"  type="text"  name="lanhoc" value="<%=ld.get(i).getLanhoc()%>">
+                                <input class= "form-control"  type="number"  name="lanhoc" value="<%=ld.get(i).getLanhoc()%>">
                             </th>                           
                             <th>
-                            <input class= "form-control"  type="text"  name="lanthi" value="<%=ld.get(i).getLanthi()%>">
+                            <input class= "form-control"  type="number"  name="lanthi" value="<%=ld.get(i).getLanthi()%>">
                             </th>
                             <th>
-                            <input class= "form-control"  type="text"  name="dthi" value="<%=ld.get(i).getDthi()%>"> 
+                            <input class= "form-control"  type="number"  name="dthi" value="<%=ld.get(i).getDthi()%>"> 
                             </th>
                             <th>
                             <div class="text-center">

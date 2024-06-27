@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>QLDIEM</title>
+    <title>QLSINHVIEN</title>
     <style>
         .error {
           color: red;
@@ -52,7 +52,7 @@
                 <div class="modal-body w-200 ">
                     <div class="d-flex align-items-center ">
                         <div class="form-signin w-200 m-auto bg-body-tertiary py-4 px-4 " >
-                            <form action="slsinhvien" method="post">
+                            <form action="slsinhvien" method="post" enctype="multipart/form-data">
                                 <div class="">
                                     <label class="form-label " for="masv">Mã sinh viên:<span class="error"></span> </label><br>
                                     <input class="form-control" type="text" name="masv" id="masv">   
@@ -97,6 +97,10 @@
                                             Nữ
                                         </label>
                                     </div>
+                                </div>
+                                <div class="">
+                                    <label>Photo</label><br/>
+                                    <input type="file" class="form-control" name="photo" placeholder="Enter photo">
                                 </div>
                                 <div class="me-5">
                                     <input class="btn btn-success" type="submit" name="btnthem" id="submitBtn" value="Thêm">
@@ -153,6 +157,7 @@
                     <thead>
                         <tr>
                         <th>MASV</th>
+                        <th>Ảnh sinh viên</th>
                         <th>Khoa</th>
                         <th>Khóa học</th>
                         <th>Họ và tên</th>
@@ -172,14 +177,19 @@
                             else{
                                 htt = "1";
                                 lsv = sv.hienthi(htt);
-                            }                          
+                            }
                             for(int i =0;i < lsv.size();i++){
+                            
                         %>
-                        <form action='slsinhvien' method='post'>
+                        <form action='slsinhvien' method='post' enctype="multipart/form-data">
                         <input type='hidden' name='masv' value='<%=lsv.get(i).getMasv()%>'>
                         <tr>
                         <th>
                         <%=lsv.get(i).getMasv()%>
+                        </th>
+                        <th>
+                        <img src="anhsv/<%=lsv.get(i).getAnhsv()%>" width="100" height="100">
+                        <input type="file" class="form-control" name="photo" placeholder="Enter photo">
                         </th>
                         <th>
                             <select class='form-select' name='kkhoa' id='mySelect'>
@@ -226,7 +236,7 @@
                         </div> 
                         </th>
                         <th> 
-                        <input class='btn btn-success ms-3 me-3' type='submit' name='action' id='submitBtn' value='Sửa'>
+                        <input class='btn btn-success mg-3' type='submit' name='action' id='submitBtn' value='Sửa'>
                         <input class='btn btn-success' type='submit' name='action' value='Xóa'>                        
                         </th>
                         </tr>

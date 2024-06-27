@@ -1,3 +1,6 @@
+<%@page import="com.Class.vaitro"%>
+<%@page import="java.util.List"%>
+<%@page import="com.Class.taikhoan"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpSession" %>
 
@@ -117,16 +120,56 @@
           </a>
         </div>
         <div>
-          <ul class="nav">
+          <ul class="nav">    
             <li class="nav-item mx-3"><a href="lienhe?bang=lienhe" class="nav-link px-2">TRANG CHỦ</a></li>
-            <li class="nav-item mx-3"><a href="sldiem" class="nav-link px-2">ĐIỂM</a></li>
-            <li class="nav-item mx-3"><a href="slmonhoc?bang=qlmonhoc" class="nav-link px-2">MÔN HỌC</a></li>
-            <li class="nav-item mx-3"><a href="slsinhvien?bang=qlsinhvien" class="nav-link px-2">SINH VIÊN</a></li>
-            <li class="nav-item mx-3"><a href="slhocluc?bang=qlsinhvien" class="nav-link px-2">HỌC LỰC</a></li>
-            <% 
+            <%  
                 String username = (String) session.getAttribute("username");
-                if("admin".equals(username)){
-                    out.print("<li class='nav-item mx-3'><a href='tranghome' class='nav-link px-2'>ADMIN</a></li>");
+                if(username != null){
+                    taikhoan tk = new taikhoan();
+                    tk = tk.hienthi(username);    
+                    vaitro vt = new vaitro();
+                    vt = vt.hienthi(tk.getMavt()); 
+                    if(vt.getQldiem() == 1){
+            %>
+            <li class="nav-item mx-3"><a href="sldiem" class="nav-link px-2">ĐIỂM</a></li>
+            <%
+                    }
+                    if(vt.getQlmonhoc()== 1){
+            %>
+            <li class="nav-item mx-3"><a href="slmonhoc?bang=qlmonhoc" class="nav-link px-2">MÔN HỌC</a></li>
+            <%        
+                    }
+                    if(vt.getQlsinhvien()== 1){
+            %>
+            <li class="nav-item mx-3"><a href="slsinhvien?bang=qlsinhvien" class="nav-link px-2">SINH VIÊN</a></li>
+            <%        
+                    }
+                    if(vt.getQllienhe()== 1){
+            %>
+            <li class="nav-item mx-3"><a href="adminlh" class="nav-link px-2">LIÊN HỆ</a></li>
+            <%        
+                    }
+                    if(vt.getQltaikhoan()== 1){
+            %>
+            <li class="nav-item mx-3"><a href="sltaikhoan" class="nav-link px-2">TÀI KHOẢN</a></li>
+            <%        
+                    }
+                    if(vt.getQlphantramdiem()== 1){
+            %>
+            <li class="nav-item mx-3"><a href="slphantramd" class="nav-link px-2">PHẦN TRĂM DIỂM</a></li>
+            <%        
+                    }
+                } 
+            %>
+            <li class="nav-item mx-3"><a href="slhocluc?bang=qlsinhvien" class="nav-link px-2">HỌC LỰC</a></li>
+            
+            <%
+                if(username != null){
+                    if("admin".equals(username)){
+                    %>
+            <li class="nav-item mx-3"><a href="slvaitro" class="nav-link px-2">VAI TRÒ</a></li>
+            <%
+                    }
                 }
             %>
           </ul>

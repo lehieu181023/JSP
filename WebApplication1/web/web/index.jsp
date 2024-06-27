@@ -1,5 +1,4 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@include file="headers.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -232,24 +231,21 @@
                 định hướng ứng dụng và chuyển giao tri thức, phục vụ sự phát triển của Đất nước.</p>
             <br>
             <div class="row">
-                <c:set var="bean" value="${JSFtop3}" />
-                <c:forEach var="index" begin="1" end="3">
                 <div class="col-sm-4">
                     <p class="text-center">
                         <strong></strong>
                     </p><br>
-                    <a href="#demo${index}" data-toggle="collapse">
+                    <a href="#demo" data-toggle="collapse">
                         <img src="" class="img-circle person" alt="Random Name" width="255"
                             height="255">
                     </a>
                     
-                    <div id="demo${index}" class="collapse">
-                        <p>Sinh Viên Ngành: ${bean.so}</p>
-                        <p>Loại bằng: ${JSFtop3.JSFtop3().get(index).getXeploai()}</p>
+                    <div id="demo" class="collapse">
+                        <p>Sinh Viên Ngành: </p>
+                        <p>Loại bằng: </p>
                         <p></p>
                     </div>
                 </div>
-                </c:forEach>
                 
             </div>
         </div>

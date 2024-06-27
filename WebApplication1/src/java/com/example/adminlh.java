@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class adminlh extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("web/pageadmin-lh.jsp").forward(request, response);
+        request.getRequestDispatcher("web/lienhe.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

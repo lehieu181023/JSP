@@ -1,10 +1,11 @@
 
 
+<%@page import="com.Class.vaitro"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.Class.taikhoan" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
-
+<%@include file="headers.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,6 +65,20 @@
                                         <input class="form-control" type="password" name="matkhau" id="monhoc">
                                 </div>
                                 <div class="">
+                                        <label class="control-label" for="vaitro">Vai trò:</label>
+                                        <select class='form-select' name='vaitro' id='vaitro'>
+                                            <% 
+                                            vaitro vt = new vaitro();
+                                            List<vaitro> lvt = vt.hienthi();
+                                            for(int i = 0; i < lvt.size(); i++){
+                                             %>                                                    
+                                                    <option value='<%=lvt.get(i).getMavt()%>'><%=lvt.get(i).getTenvt()%></option>
+                                            <%                                                
+                                            }
+                                            %>
+                                        </select>                                           
+                                </div>
+                                <div class="">
                                     <label class="control-label">Duyệt:</label><br>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="duyet" id="gt1" value="on">
@@ -114,6 +129,7 @@
                     <tr>
                     <th>Tài khoản</th>
                     <th>Mật khẩu</th>
+                    <th>Vai trò</th>
                     <th>Duyệt</th>
                     <th>Cập nhập</th>
                     </tr>
@@ -139,6 +155,26 @@
                         </th>
                         <th>
                         <input class='form-control' type='text' name='matkhau' value='<%=ltk.get(i).getMatkhau()%>'";
+                        </th>
+                        <th>
+                            <div class="">
+                                <select class='form-select' name='vaitro' id='mySelect'>
+                                    <%
+                                    for(int j = 0; j < lvt.size();j++){
+                                     if( ltk.get(i).getMavt() == (lvt.get(j).getMavt()) ){
+                                            %>
+                                            <option value='<%=lvt.get(j).getMavt()%>' selected><%=lvt.get(j).getTenvt()%></option>
+                                    <%
+                                        }
+                                        else{
+                                            %>
+                                            <option value='<%=lvt.get(j).getMavt()%>'><%=lvt.get(j).getTenvt()%></option>
+                                    <%
+                                        }                                               
+                                    }
+                                    %>
+                                </select>                                           
+                            </div>
                         </th>
                         <th>
                             <div class='input-group'> 

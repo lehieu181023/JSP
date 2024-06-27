@@ -23,25 +23,30 @@ public class sltaikhoan extends HttpServlet {
         String taikhoan = request.getParameter("taikhoan");
         String matkhau = request.getParameter("matkhau");
         String duyet = request.getParameter("duyet");
+        int vaitro = 1;
         String btn = request.getParameter("action");
+        try {
+            vaitro = Integer.parseInt(request.getParameter("vaitro"));
+        } catch (Exception e) {
+        }
         
         if("Them".equals(btn)) {
-            taikhoan tk = new taikhoan(taikhoan, matkhau, duyet);
+            taikhoan tk = new taikhoan(taikhoan, matkhau, duyet, vaitro);
             tk.them();
             response.sendRedirect(request.getHeader("referer"));
         }
         else if("Sua".equals(btn)) {
-            taikhoan tk = new taikhoan(taikhoan, matkhau, duyet);
+            taikhoan tk = new taikhoan(taikhoan, matkhau, duyet,vaitro);
             tk.sua();
             response.sendRedirect(request.getHeader("referer"));
         }
         else if("Xoa".equals(btn)) {
-            taikhoan tk = new taikhoan(taikhoan, matkhau, duyet);
+            taikhoan tk = new taikhoan(taikhoan, matkhau, duyet,vaitro);
             tk.xoa();
             response.sendRedirect(request.getHeader("referer"));
         }
         else{
-            request.getRequestDispatcher("web/pageadmin-qltk.jsp").forward(request, response);
+            request.getRequestDispatcher("web/taikhoan.jsp").forward(request, response);
         }
     }
 

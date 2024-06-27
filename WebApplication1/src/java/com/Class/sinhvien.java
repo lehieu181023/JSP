@@ -29,18 +29,19 @@ public class sinhvien implements chucnang{
     private float TBCHT;
     private String xeploai;
     private String nganh;
+    private String anhsv;
 
     public sinhvien(){}
 
-    public sinhvien(String hoten, String masv, String khoahoc, Date ngaysinh, String gioitinh, String nganh) {
+    public sinhvien(String hoten, String masv, String khoahoc, Date ngaysinh, String gioitinh, String nganh, String anhsv) {
         this.hoten = hoten;
         this.masv = masv;
         this.khoahoc = khoahoc;
         this.ngaysinh = ngaysinh;
         this.gioitinh = gioitinh;
         this.nganh = nganh;
+        this.anhsv = anhsv;
     }
-
     public String getNganh() {
         return nganh;
     }
@@ -107,17 +108,25 @@ public class sinhvien implements chucnang{
         this.xeploai = xeploai;
     }
 
+    public String getAnhsv() {
+        return anhsv;
+    }
+
+    public void setAnhsv(String anhsv) {
+        this.anhsv = anhsv;
+    }
+
     DBconnect db = new DBconnect();
     
     @Override
     public void them() {
-        String sql = "INSERT INTO `qlsinhvien` (`MASV`, `MAK`, `khoahoc`, `HOTEN`, `NGAYSINH`, `GIOITINH`) VALUES ('"+this.masv+"', '"+this.nganh+"', '"+this.khoahoc+"', '"+this.hoten+"', '"+this.getsimpeldate(this.ngaysinh)+"', '"+this.gioitinh+"')";
+        String sql = "INSERT INTO `qlsinhvien` (`MASV`, `MAK`, `khoahoc`, `HOTEN`, `NGAYSINH`, `GIOITINH`,`anhsv`) VALUES ('"+this.masv+"', '"+this.nganh+"', '"+this.khoahoc+"', '"+this.hoten+"', '"+this.getsimpeldate(this.ngaysinh)+"', '"+this.gioitinh+"', '"+this.anhsv+"')";
         db.chucnang(sql);
     }
 
     @Override
     public void sua() {
-        String sql = "UPDATE qlsinhvien SET HOTEN='"+this.hoten+"', NGAYSINH='"+this.getsimpeldate(this.ngaysinh)+"', GIOITINH='"+this.gioitinh+"', MAK='"+this.nganh+"', khoahoc='"+this.khoahoc+"' WHERE MASV='"+this.masv+"'";
+        String sql = "UPDATE qlsinhvien SET HOTEN='"+this.hoten+"', NGAYSINH='"+this.getsimpeldate(this.ngaysinh)+"', GIOITINH='"+this.gioitinh+"', MAK='"+this.nganh+"', khoahoc='"+this.khoahoc+"',`anhsv`='"+this.anhsv+"' WHERE MASV='"+this.masv+"'";
         db.chucnang(sql);
     }
 
@@ -183,6 +192,7 @@ public class sinhvien implements chucnang{
                 sv.setNgaysinh(rs.getDate("NGAYSINH"));
                 sv.setTBCHT(rs.getFloat("TBCHT"));
                 sv.setXeploai(rs.getString("XEPLOAI"));
+                sv.setAnhsv(rs.getString("anhsv"));
                 lsv.add(sv);
             }
             dbht.dis();
@@ -208,6 +218,7 @@ public class sinhvien implements chucnang{
                 sv.setNgaysinh(rs.getDate("NGAYSINH"));
                 sv.setTBCHT(rs.getFloat("TBCHT"));
                 sv.setXeploai(rs.getString("XEPLOAI"));
+                sv.setAnhsv(rs.getString("anhsv"));
                 lsv.add(sv);
             }
             dbht.dis();

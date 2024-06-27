@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/java/com/Class/hocluc.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>84</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/CN%20Java/test2/WebApplication1/web/web/index.jsp</file>
-            <file>file:/D:/CN%20Java/test2/WebApplication1/src/java/com/Class/JSFtop3.java</file>
-            <file>file:/D:/CN%20Java/test2/WebApplication1/src/java/com/example/image.java</file>
+            <file>file:/D:/CN%20Java/test2/WebApplication1/src/java/com/example/slsinhvien.java</file>
+            <file>file:/D:/CN%20Java/test2/WebApplication1/web/web/qlsinhvien.jsp</file>
             <file>file:/D:/CN%20Java/test2/WebApplication1/src/java/com/Class/sinhvien.java</file>
         </group>
     </open-files>

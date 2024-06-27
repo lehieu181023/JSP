@@ -20,12 +20,28 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class taikhoan implements chucnang{
     DBconnect db = new DBconnect();
-    public taikhoan(String taikhoan, String matkhau, String duyet) {
+    private String taikhoan;
+    private String matkhau;
+    private String duyet;
+    private int mavt;
+
+    public taikhoan(String taikhoan, String matkhau, String duyet, int mavt) {
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.duyet = duyet;
+        this.mavt = mavt;
     }
+
     public taikhoan(){}
+
+    public int getMavt() {
+        return mavt;
+    }
+
+    public void setMavt(int mavt) {
+        this.mavt = mavt;
+    }
+ 
     public String getTaikhoan() {
         return taikhoan;
     }
@@ -49,19 +65,18 @@ public class taikhoan implements chucnang{
     public void setDuyet(String duyet) {
         this.duyet = duyet;
     }
-    private String taikhoan;
-    private String matkhau;
-    private String duyet;
+    
+    
 
     @Override
     public void them() {   
-        String sql = "INSERT INTO `taikhoan`(`username`, `password`, `duyet`) VALUES ('"+taikhoan+"','"+matkhau+"','"+duyet+"')";
+        String sql = "INSERT INTO `taikhoan`(`username`, `password`, `duyet`, `mavt`) VALUES ('"+taikhoan+"','"+matkhau+"','"+duyet+"',"+mavt+")";
         db.chucnang(sql);
     }
 
     @Override
     public void sua() {
-        String sql = "UPDATE `taikhoan` SET`password`='"+matkhau+"',`duyet`='"+duyet+"' WHERE  `username`='"+taikhoan+"'";
+        String sql = "UPDATE `taikhoan` SET`password`='"+matkhau+"',`duyet`='"+duyet+"',`mavt`="+mavt+" WHERE  `username`='"+taikhoan+"'";
         db.chucnang(sql);
     }
 
@@ -82,6 +97,7 @@ public class taikhoan implements chucnang{
                 tk.setTaikhoan(rs.getString("username"));
                 tk.setMatkhau(rs.getString("password"));
                 tk.setDuyet(rs.getString("duyet"));
+                tk.setMavt(rs.getInt("mavt"));
                 ltk.add(tk);
             }
             dbht.dis();
@@ -89,6 +105,24 @@ public class taikhoan implements chucnang{
             Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ltk;
+    }
+    public taikhoan hienthi(String taikhoan) {
+        taikhoan tk = new taikhoan();
+        String sql = "SELECT * FROM taikhoan WHERE username = '"+taikhoan+"'";
+        DBconnect dbht = db.getrs(sql);
+        ResultSet rs = dbht.getRs();
+        try {
+            while (rs.next()) {     
+                tk.setTaikhoan(rs.getString("username"));
+                tk.setMatkhau(rs.getString("password"));
+                tk.setDuyet(rs.getString("duyet"));
+                tk.setMavt(rs.getInt("mavt"));
+            }
+            dbht.dis();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBconnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tk;
     }
     public String checkd(){
         return "checked";

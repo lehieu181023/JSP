@@ -7,18 +7,24 @@ package com.example;
 import com.Class.sinhvien;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author lehie
  */
+@MultipartConfig
 public class slsinhvien extends HttpServlet {
 
     /**
@@ -39,6 +45,8 @@ public class slsinhvien extends HttpServlet {
         String hoten = request.getParameter("hoten");
         String masv = request.getParameter("masv");
         String khoahoc = request.getParameter("khoahoc");
+        
+        
         Date ngaysinh = new Date(2000, 01, 01);
         try {
             ngaysinh = formatter.parse(request.getParameter("date"));
@@ -49,18 +57,52 @@ public class slsinhvien extends HttpServlet {
         String btnthem = request.getParameter("btnthem");
         String btnupdate = request.getParameter("action");
         if(btnthem != null){
-            sinhvien sv = new sinhvien(hoten, masv, khoahoc, ngaysinh, gioitinh, nganh);
-            sv.them();
-            response.sendRedirect(request.getHeader("referer"));
+            try {
+                Part part = request.getPart("photo");
+                if(part != null&& part.getSize() > 0){ 
+                    String realpart = request.getServletContext().getRealPath("/anhsv");
+                    String filename = Path.of(part.getSubmittedFileName()).getFileName().toString();
+                    if(!Files.exists(Path.of(realpart))){
+                        Files.createDirectories(Path.of(realpart));
+                    }
+                    part.write(realpart + "/" +masv +".png");
+                    sinhvien sv = new sinhvien(hoten, masv, khoahoc, ngaysinh, gioitinh, nganh,masv+".png");
+                    sv.them();
+                }
+                else{                  
+                    sinhvien sv = new sinhvien(hoten, masv, khoahoc, ngaysinh, gioitinh, nganh,"default.png");
+                    sv.them();
+                }
+                response.sendRedirect(request.getHeader("referer"));
+            } catch (Exception e) {
+            }     
         }
         else if (btnupdate != null){
             if("Xóa".equals(btnupdate)){
-                sinhvien sv = new sinhvien(hoten, masv, khoahoc, ngaysinh, gioitinh, nganh);
+                sinhvien sv = new sinhvien(hoten, masv, khoahoc, ngaysinh, gioitinh, nganh, masv+".png");
                 sv.xoa();
+                String realpart = request.getServletContext().getRealPath("/anhsv");
+                Path fileToDelete = Paths.get(realpart, masv+".png");
+                if (Files.exists(fileToDelete)) {
+                    Files.delete(fileToDelete);
+                }
                 response.sendRedirect(request.getHeader("referer"));
             }
             else{
-                sinhvien sv = new sinhvien(hoten, masv, khoahoc, ngaysinh, gioitinh, nganh);
+                Part part = request.getPart("photo");
+                if(part != null&& part.getSize() > 0){
+                    String realpart = request.getServletContext().getRealPath("/anhsv");
+                    String filename = Path.of(part.getSubmittedFileName()).getFileName().toString();
+                    if(!Files.exists(Path.of(realpart))){
+                        Files.createDirectories(Path.of(realpart));
+                    }
+                    Path fileToDelete = Paths.get(realpart, masv+".png");
+                    if (Files.exists(fileToDelete)) {
+                        Files.delete(fileToDelete);
+                    }
+                    part.write(realpart + "/" +masv +".png");
+                }
+                sinhvien sv = new sinhvien(hoten, masv, khoahoc, ngaysinh, gioitinh, nganh, masv+".png");
                 sv.sua();
                 response.sendRedirect(request.getHeader("referer"));
             }

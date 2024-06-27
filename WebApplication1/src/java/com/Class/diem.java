@@ -138,17 +138,12 @@ public class diem implements chucnang{
         this.note = note;
     }
 
-    public DBconnect getDb() {
-        return db;
-    }
-
-    public void setDb(DBconnect db) {
-        this.db = db;
-    }
-    
+    DBconnect db = new DBconnect();
     public boolean tinhTBCHP(){
+        ptrdiem ptrd = new ptrdiem();
+        ptrd = ptrd.hienthi();
         if(diemcc >= 0 && diemcc <= 10 && diemgk >= 0 && diemgk <= 10 && dthi >= 0 && dthi <=10){
-             tbchp = (diemcc/100)*10 + (diemgk/100)*20 + (dthi/100)*70;
+             tbchp = (diemcc/100)*ptrd.getDcc() + (diemgk/100)*ptrd.getDgk() + (dthi/100)*ptrd.getDt();
              return true;
         }
         else{
@@ -181,7 +176,7 @@ public class diem implements chucnang{
             return  false;
         }
     }
-    DBconnect db = new DBconnect();
+   
     @Override
     public void them() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

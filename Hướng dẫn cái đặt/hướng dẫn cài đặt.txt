@@ -1,0 +1,10 @@
+- Cài cơ sở dữ liệu
++ tên database "webphp"
++ Nhập vào csdl file webphp.sql
+- yêu cầu về farmework:
++ jdk20;
++ netbean;
++ tomcat 9;
+- chỉnh đường link tại dòng 2 của file
+META-INF\context.xml
+tới nơi chứa file context.xml

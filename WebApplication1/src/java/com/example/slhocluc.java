@@ -4,6 +4,7 @@
  */
 package com.example;
 
+import com.Class.hocluc;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -31,6 +32,8 @@ public class slhocluc extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if(session.getAttribute("username")!=null){
+                    hocluc hl = new hocluc();
+                    hl.them();
                     request.getRequestDispatcher("web/tkhocluc.jsp").forward(request, response);
                 }
             else{

@@ -2,6 +2,7 @@
 <%@page import="com.Class.lienhe" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
+<%@include file="headers.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
