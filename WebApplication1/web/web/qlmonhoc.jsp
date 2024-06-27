@@ -39,7 +39,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Thêm sinh viên</h4>
+                    <h4 class="modal-title">Thêm môn học</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="">
                                         <label class="control-label" for="tinchi">Số tín chỉ: <span class="error"></span></label>
-                                        <input class="form-control" type="text" name="sotinchi" id="tinchi">
+                                        <input class="form-control" type="number" name="sotinchi" id="tinchi">
                                 </div>
                                 <div class="pt-3">
                                     <input class="btn btn-success" type="submit" name="btnthem" id="submitBtn" value="Thêm">
@@ -124,7 +124,7 @@
                        <input class='form-control' type='text' name='monhoc' value='<%=lmh.get(i).getTenmh()%>'>
                    </th>
                    <th>
-                       <input class='form-control' type='text' name='sotinchi' value='<%=lmh.get(i).getSotinchi()%>'>
+                       <input class='form-control' type='number' name='sotinchi' value='<%=lmh.get(i).getSotinchi()%>'>
                    </th>                           
                    <th> 
 

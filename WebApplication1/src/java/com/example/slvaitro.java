@@ -55,6 +55,7 @@ public class slvaitro extends HttpServlet {
         }
         String btnthem = request.getParameter("btnthem");
         String btnupdate = request.getParameter("action");
+        System.out.println("btn: "+btnupdate);
         
         if(btnthem != null){
             vaitro vt = new vaitro(mavt, tenvt, qltaikhoan, qldiem, qlmonhoc, qlsinhvien, qllienhe, qlphantramdiem);
@@ -62,6 +63,7 @@ public class slvaitro extends HttpServlet {
             response.sendRedirect(request.getHeader("referer"));
         }else if(btnupdate != null){
             if("Xóa".equals(btnupdate)){
+                System.out.println("updatesus");
                 vaitro vt = new vaitro(mavt, tenvt, qltaikhoan, qldiem, qlmonhoc, qlsinhvien, qllienhe, qlphantramdiem);
                 vt.xoa();
                 response.sendRedirect(request.getHeader("referer"));

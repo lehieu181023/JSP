@@ -1,4 +1,4 @@
-- Cài cơ sở dữ liệu
+- Cài cơ sở dữ liệu(Mysql)
 + tên database "webphp"
 + Nhập vào csdl file webphp.sql
 - yêu cầu về farmework:
